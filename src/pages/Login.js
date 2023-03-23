@@ -46,7 +46,7 @@ function Login() {
       minHeight="100vh"
     >
       <Typography className="mb-4" variant="h4">
-        Login User
+        LOGIN
       </Typography>
       <MAInput className="mb-3" label="Email" type="email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} width="25rem"/>
       <MAInput className="mb-3" label="Password" type="password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} width="25rem"/>
@@ -54,13 +54,6 @@ function Login() {
       <Box className="mt-5 mb-5"> 
       <MAButton loading={loader} label="login" size="large" onClick={loginUsers} />
       </Box>
-      <Typography
-        sx={{ cursor: "pointer" }}
-        className="text-primary mt-2"
-        onClick={() => navigate("/signup")}
-      >
-        Not a user please register!
-      </Typography>
     </Box>
   );
 }

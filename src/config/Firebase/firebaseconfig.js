@@ -2,14 +2,13 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjlPWE0GainT5BMret_lCiaECesqpctIE",
-  authDomain: "login-322.firebaseapp.com",
-  databaseURL: "https://login-322-default-rtdb.firebaseio.com",
-  projectId: "login-322",
-  storageBucket: "login-322.appspot.com",
-  messagingSenderId: "555330133031",
-  appId: "1:555330133031:web:7d08d2c341d90f63a98202",
-  measurementId: "G-ZHZD452HXF"
+  apiKey: "AIzaSyCeTw3T9a-nyKYdQEW-K7aeVoiXTF11Fpk",
+  authDomain: "institute-322.firebaseapp.com",
+  projectId: "institute-322",
+  storageBucket: "institute-322.appspot.com",
+  messagingSenderId: "136810697359",
+  appId: "1:136810697359:web:6789666d5bd188401116fa",
+  measurementId: "G-WG8BGT28V5"
 };
 
 
