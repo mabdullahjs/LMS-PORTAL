@@ -6,6 +6,7 @@ import Appbar from '../config/components/muiCom/Appbar'
 import { signOutUser } from '../config/Firebase/firebaseMethod'
 import MAButton from '../config/components/MAButton'
 import InsForm from './homeScreens/InsForm'
+import Insitute from './homeScreens/Insitute'
 
 function Home() {
 
@@ -46,14 +47,14 @@ function Home() {
       <Appbar logout={signout} />
 
       <Box className="mt-4 d-flex justify-content-evenly">
-        <MAButton onClick={() => navigate('/home/head')} label="Institutes" variant="outlined" />
-        <MAButton onClick={() => navigate('/home/head1')} label="Create Institute" variant="outlined" />
+        <MAButton onClick={() => navigate('/home/institute')} label="Institutes" variant="outlined" />
+        <MAButton onClick={() => navigate('/home/')} label="Create Institute" variant="outlined" />
         <MAButton onClick={() => navigate('/home/head2')} label="Create User" variant="outlined" />
       </Box>
 
       <Routes>
-        <Route path='/head' element={<h1>Head01</h1>} />
-        <Route path='/head1' element={<InsForm/>} />
+        <Route path='/institute' element={<Insitute/>} />
+        <Route path='/' element={<InsForm/>} />
         <Route path='/head2' element={<h1>Head03</h1>} />
       </Routes>
     </Box>
