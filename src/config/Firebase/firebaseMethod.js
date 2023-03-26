@@ -88,13 +88,15 @@ const sendData = (obj, colName) => {
 //get data with id from firestore
 const getData = (colName) => {
   return new Promise(async (resolve, reject) => {
+    const dataArr = []
     const q = query(
       collection(db, colName),
       where("id", "==", auth.currentUser.uid)
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      resolve(doc.data());
+      dataArr.push(doc.data())
+      resolve(dataArr);
     });
     reject("error occured");
   });
