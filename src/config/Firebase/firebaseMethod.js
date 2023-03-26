@@ -101,4 +101,4 @@ const getData = (colName) => {
 };
 
 
-export { signUpUser, loginUser, auth, signOutUser, sendData, getData };
+export { signUpUser, loginUser, auth, signOutUser, sendData, getData , db };

@@ -1,12 +1,10 @@
 import React from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 // import { auth, sendData, signOutUser } from '../config/Firebase/firebaseMethod'
-import { Box } from '@mui/material'
-import Appbar from '../config/components/muiCom/Appbar'
+import { Box, Typography } from '@mui/material'
 import { signOutUser } from '../config/Firebase/firebaseMethod'
-import MAButton from '../config/components/MAButton'
-import InsForm from './homeScreens/InsForm'
-import Insitute from './homeScreens/Insitute'
+import Drawer from '../config/components/muiCom/Drawer'
+import Institute from './homeScreens/Institute'
 
 function Home() {
 
@@ -42,20 +40,27 @@ function Home() {
         console.log(err);
       })
   }
+
+  const user = ()=>{
+    navigate('/home/user')
+  }
+  const institute = ()=>{
+    navigate('/home/')
+  }
   return (
     <Box>
-      <Appbar logout={signout} />
+     
 
-      <Box className="mt-4 d-flex justify-content-evenly">
+      {/* <Box className="mt-4 d-flex justify-content-evenly">
         <MAButton onClick={() => navigate('/home/institute')} label="Institutes" variant="outlined" />
         <MAButton onClick={() => navigate('/home/')} label="Create Institute" variant="outlined" />
         <MAButton onClick={() => navigate('/home/head2')} label="Create User" variant="outlined" />
-      </Box>
+      </Box> */}
 
       <Routes>
-        <Route path='/institute' element={<Insitute/>} />
-        <Route path='/' element={<InsForm/>} />
-        <Route path='/head2' element={<h1>Head03</h1>} />
+        <Route path='/' element={ <Drawer signout={signout} user={user} institute={institute} screen={<Institute/>}/>} />
+        {/* <Route path='/' element={<InsForm/>} /> */}
+        <Route path='/user' element={<Drawer signout={signout} user={user} institute={institute} screen={<Typography>User</Typography>}/>}  />
       </Routes>
     </Box>
   )
