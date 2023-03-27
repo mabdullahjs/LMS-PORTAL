@@ -8,25 +8,6 @@ import Institute from './homeScreens/Institute'
 
 function Home() {
 
-
-
-  //send data
-  // const dataSend = () => {
-  //   const userId = auth.currentUser.uid
-  //   sendData({
-  //     name: "checking",
-  //     email: "checking",
-  //     id: userId
-  //   }, "datas")
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log(date);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
-
   //navigation
 
   const navigate = useNavigate()
@@ -42,10 +23,10 @@ function Home() {
   }
 
   const user = ()=>{
-    navigate('/home/user')
+    navigate('/admin/user')
   }
   const institute = ()=>{
-    navigate('/home/')
+    navigate('/admin/')
   }
   return (
     <Box>
