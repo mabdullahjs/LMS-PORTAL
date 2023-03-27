@@ -29,7 +29,7 @@ function Login() {
     loginUser(obj)
       .then((res) => {
         console.log(res);
-        navigate("/home");
+        navigate("/admin");
       })
       .catch((err) => {
         console.log(err);
