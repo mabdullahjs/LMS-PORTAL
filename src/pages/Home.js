@@ -51,12 +51,6 @@ function Home() {
     <Box>
      
 
-      {/* <Box className="mt-4 d-flex justify-content-evenly">
-        <MAButton onClick={() => navigate('/home/institute')} label="Institutes" variant="outlined" />
-        <MAButton onClick={() => navigate('/home/')} label="Create Institute" variant="outlined" />
-        <MAButton onClick={() => navigate('/home/head2')} label="Create User" variant="outlined" />
-      </Box> */}
-
       <Routes>
         <Route path='/' element={ <Drawer signout={signout} user={user} institute={institute} screen={<Institute/>}/>} />
         {/* <Route path='/' element={<InsForm/>} /> */}
