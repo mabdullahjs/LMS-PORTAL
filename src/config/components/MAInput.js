@@ -13,7 +13,8 @@ function MAInput(props) {
         rows,
         multiline,
         width,
-        className
+        className,
+        fullWidth
     } = props
     return (
         <TextField
@@ -28,6 +29,7 @@ function MAInput(props) {
             variant={variant ? variant : "standard"}
             multiline={multiline}
             rows={rows}
+            fullWidth={fullWidth ? fullWidth : true}
         />
     )
 }

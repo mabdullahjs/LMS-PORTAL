@@ -7,11 +7,12 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 // import { Get } from "../apimethods/apimethods";
 
 export default function MADatePicker(props) {
-  const { label, value, onChange } = props;
+  const { label, value, onChange , width } = props;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
+      sx={{width:`${width}`}}
         label={label}
         value={value}
         onChange={onChange}

@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function MASelect(props) {
-  const {value , onChange , option , label , className} = props
+  const {value , onChange , option , label , className , width} = props
 
 
   return (
@@ -19,14 +19,16 @@ export default function MASelect(props) {
           value={value}
           label="Age"
           onChange={onChange}
+          sx={{width:`${width}`}}
+          fullWidth
           
         >
           {/* <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem> */}
-          {option.map((item , index)=>{
+          {option ? option.map((item , index)=>{
             return <MenuItem key={index} value={item}>{item}</MenuItem>
-          })}
+          }) : null}
         </Select>
       </FormControl>
     </Box>
