@@ -2,9 +2,9 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import MAButton from "../../config/components/MAButton";
-import MAModal from "../../config/components/MAModal";
-import { getData } from "../../config/Firebase/firebaseMethod";
+import MAButton from "../../../config/components/MAButton";
+import MAModal from "../../../config/components/MAModal";
+import { getData } from "../../../config/Firebase/firebaseMethod";
 import InsForm from "./InsForm";
 
 function Institute() {
@@ -69,7 +69,7 @@ function Institute() {
                 <td>{item.type}</td>
               </tr>
             );
-          }) : <Typography variant="h5">LOADING...</Typography>}
+          }) : <tr><td>loading...</td></tr>}
         </tbody>
       </Table>
       <MAModal

@@ -62,22 +62,22 @@ function Register() {
                         <MASelect option={["TypeScript", "JavaScript"]} onChange={(e) => setCourse(e.target.value)} value={course} variant="outlined" label="Select Course" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setName(e.target.value)} value={name} variant="outlined" label="Full Name" />
+                        <MAInput fullWidth={true} onChange={(e) => setName(e.target.value)} value={name} variant="outlined" label="Full Name" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setFname(e.target.value)} value={fname} variant="outlined" label="Father Name" />
+                        <MAInput fullWidth={true} onChange={(e) => setFname(e.target.value)} value={fname} variant="outlined" label="Father Name" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setEmail(e.target.value)} type="email" value={email} variant="outlined" label="Email" />
+                        <MAInput fullWidth={true} onChange={(e) => setEmail(e.target.value)} type="email" value={email} variant="outlined" label="Email" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setPhone(e.target.value)} value={phone} variant="outlined" type="number" label="Phone" />
+                        <MAInput fullWidth={true} onChange={(e) => setPhone(e.target.value)} value={phone} variant="outlined" type="number" label="Phone" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setCnic(e.target.value)} value={cnic} variant="outlined" type="number" label="CNIC" />
+                        <MAInput fullWidth={true} onChange={(e) => setCnic(e.target.value)} value={cnic} variant="outlined" type="number" label="CNIC" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MAInput onChange={(e) => setFcnic(e.target.value)} value={fcnic} variant="outlined" type="number" label="Father CNIC" />
+                        <MAInput fullWidth={true} onChange={(e) => setFcnic(e.target.value)} value={fcnic} variant="outlined" type="number" label="Father CNIC" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
                         <MADatePicker onChange={(e) => setDate(e)} value={date} variant="outlined" label="Date of Birth" />
@@ -86,20 +86,20 @@ function Register() {
                         <MASelect onChange={(e) => setGender(e.target.value)} value={gender} option={["Male", "Female"]} variant="outlined" label="Select Gender" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={12}>
-                        <MAInput onChange={(e) => setAddress(e.target.value)} value={address} variant="outlined" label="Address" />
+                        <MAInput fullWidth={true} onChange={(e) => setAddress(e.target.value)} value={address} variant="outlined" label="Address" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={12}>
-                        <MAInput onChange={(e) => setQualification(e.target.value)} value={qualification} variant="outlined" label="Last Qualification" />
+                        <MAInput fullWidth={true} onChange={(e) => setQualification(e.target.value)} value={qualification} variant="outlined" label="Last Qualification" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={12}>
-                        <MAInput onChange={(e) => setLaptop(e.target.value)} value={laptop} variant="outlined" label="Do you have a laptop? " />
+                        <MAInput fullWidth={true} onChange={(e) => setLaptop(e.target.value)} value={laptop} variant="outlined" label="Do you have a laptop? " />
                     </Grid>
 
                 </Grid>
 
             </Box >
             <Box className="mt-5 d-flex justify-content-center">
-                <MAButton onClick={()=>registerStudent()} loading={loader} label="Submit" />
+                <MAButton className="mb-5" onClick={()=>registerStudent()} loading={loader} label="Submit" />
             </Box>
         </Box>
     )

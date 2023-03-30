@@ -1,9 +1,9 @@
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import MAInput from "../../config/components/MAInput";
-import MASelect from "../../config/components/MASelect";
-import MAButton from "../../config/components/MAButton";
-import { auth, sendData } from "../../config/Firebase/firebaseMethod";
+import MAButton from "../../../config/components/MAButton";
+import MAInput from "../../../config/components/MAInput";
+import MASelect from "../../../config/components/MASelect";
+import { sendData , auth } from "../../../config/Firebase/firebaseMethod";
 
 function InsForm(props) {
   const { func } = props;

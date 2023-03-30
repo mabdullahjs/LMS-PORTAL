@@ -67,7 +67,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function Drawers(props) {
-    const { signout, user , institute , screen } = props
+    const { func0, func1, func2, func3, func4, func5, func6, func7, func8, func9, func10, func11, func12, func13, func14, screen, label } = props
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -77,6 +77,28 @@ export default function Drawers(props) {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+    const arr = ['User', 'Institute', 'Signout'];
+    const handleClick = (item) => {
+        const smaller = item.toLowerCase()
+        const functions = {
+            func00: () => func0 ? func0() : null,
+            func01: () => func1 ? func1() : null,
+            func02: () => func2 ? func2() : null,
+            func03: () => func3 ? func3() : null,
+            func04: () => func4 ? func4() : null,
+            func05: () => func5 ? func5() : null,
+            func06: () => func6 ? func6() : null,
+            func07: () => func7 ? func7() : null,
+            func08: () => func8 ? func8() : null,
+            func09: () => func9 ? func9() : null,
+            func10: () => func10 ? func10() : null,
+            func11: () => func11 ? func11() : null,
+            func12: () => func12 ? func12() : null,
+            func13: () => func13 ? func13() : null,
+            func14: () => func14 ? func14() : null,
+        };
+        functions[smaller]();
     };
 
     return (
@@ -94,7 +116,7 @@ export default function Drawers(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        ADMIN
+                        {label}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -117,23 +139,11 @@ export default function Drawers(props) {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                {/* <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
                 <Divider />
                 <List>
-                    {['User','Institute', 'Signout'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton onClick={text === "User" ? ()=>user() : text === "Institute" ? ()=>institute() : text==="Signout" ? () => signout() : null}>
+                    {arr.map((text, index) => (
+                        <ListItem key={index} disablePadding>
+                            <ListItemButton onClick={() => handleClick(`func0${index}`)}>
                                 <ListItemIcon>
                                     {index % 2 === 0 ? <PersonIcon /> : <LogoutIcon />}
                                 </ListItemIcon>

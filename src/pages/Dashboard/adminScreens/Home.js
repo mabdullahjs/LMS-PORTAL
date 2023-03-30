@@ -1,10 +1,9 @@
 import React from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-// import { auth, sendData, signOutUser } from '../config/Firebase/firebaseMethod'
 import { Box, Typography } from '@mui/material'
-import { signOutUser } from '../config/Firebase/firebaseMethod'
-import Drawer from '../config/components/muiCom/Drawer'
-import Institute from './homeScreens/Institute'
+import Drawer from '../../../config/components/muiCom/Drawer'
+import Institute from './Institute'
+import { signOutUser } from '../../../config/Firebase/firebaseMethod'
 
 function Home() {
 
@@ -25,7 +24,7 @@ function Home() {
   const user = ()=>{
     navigate('/admin/user')
   }
-  const institute = ()=>{
+  const institutes = ()=>{
     navigate('/admin/')
   }
   return (
@@ -33,9 +32,9 @@ function Home() {
      
 
       <Routes>
-        <Route path='/' element={ <Drawer signout={signout} user={user} institute={institute} screen={<Institute/>}/>} />
+        <Route path='/' element={ <Drawer func0={user}  func1={institutes} func2={signout}  screen={<Institute/>} label="Admin"/>} />
         {/* <Route path='/' element={<InsForm/>} /> */}
-        <Route path='/user' element={<Drawer signout={signout} user={user} institute={institute} screen={<Typography>User</Typography>}/>}  />
+        <Route path='/user' element={<Drawer func0={user}  func1={institutes} func2={signout} screen={<Typography>User</Typography>} label="Admin"/>}  />
       </Routes>
     </Box>
   )

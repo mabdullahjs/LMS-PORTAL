@@ -29,7 +29,7 @@ function MAInput(props) {
             variant={variant ? variant : "standard"}
             multiline={multiline}
             rows={rows}
-            fullWidth={fullWidth ? fullWidth : true}
+            fullWidth={fullWidth ? fullWidth : false}
         />
     )
 }
