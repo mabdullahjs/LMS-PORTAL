@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
-import Drawer from '../../../config/components/muiCom/Drawer'
+import MADrawer from '../../../config/components/MADrawer'
 import Institute from './Institute'
 import { signOutUser } from '../../../config/Firebase/firebaseMethod'
 
@@ -32,9 +32,9 @@ function Home() {
      
 
       <Routes>
-        <Route path='/' element={ <Drawer func0={user}  func1={institutes} func2={signout}  screen={<Institute/>} label="Admin"/>} />
+        <Route path='/' element={ <MADrawer func0={user}  func1={institutes} func2={signout}  screen={<Institute/>} label="Admin"/>} />
         {/* <Route path='/' element={<InsForm/>} /> */}
-        <Route path='/user' element={<Drawer func0={user}  func1={institutes} func2={signout} screen={<Typography>User</Typography>} label="Admin"/>}  />
+        <Route path='/user' element={<MADrawer func0={user}  func1={institutes} func2={signout} screen={<Typography>User</Typography>} label="Admin"/>}  />
       </Routes>
     </Box>
   )
