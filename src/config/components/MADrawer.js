@@ -67,7 +67,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function Drawers(props) {
-    const { func0, func1, func2, func3, func4, func5, func6, func7, func8, func9, func10, func11, func12, func13, func14, screen, label } = props
+    const { func0, func1, func2, func3, func4, func5, func6, func7, func8, func9, func10, func11, func12, func13, func14, screen, label , options } = props
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -78,7 +78,7 @@ export default function Drawers(props) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const arr = ['User', 'Institute', 'Signout'];
+    const arr = options;
     const handleClick = (item) => {
         const smaller = item.toLowerCase()
         const functions = {

@@ -1,8 +1,12 @@
+import { Box } from '@mui/system'
 import React from 'react'
+import MADrawer from '../../../config/components/MADrawer'
 
 function InstituteScreen() {
   return (
-    <div>InstituteScreen</div>
+    <Box>
+      <MADrawer label="Institute" options={['User']}/>
+    </Box>
   )
 }
 

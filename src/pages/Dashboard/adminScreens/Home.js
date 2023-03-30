@@ -32,9 +32,9 @@ function Home() {
      
 
       <Routes>
-        <Route path='/' element={ <MADrawer func0={user}  func1={institutes} func2={signout}  screen={<Institute/>} label="Admin"/>} />
+        <Route path='/' element={ <MADrawer func0={user}  func1={institutes} func2={signout}  screen={<Institute/>} label="Admin" options={['User', 'Institute', 'Signout']}/>} />
         {/* <Route path='/' element={<InsForm/>} /> */}
-        <Route path='/user' element={<MADrawer func0={user}  func1={institutes} func2={signout} screen={<Typography>User</Typography>} label="Admin"/>}  />
+        <Route path='/user' element={<MADrawer func0={user}  func1={institutes} func2={signout} screen={<Typography>User</Typography> } label="Admin" options={['User', 'Institute', 'Signout']}/>}  />
       </Routes>
     </Box>
   )
