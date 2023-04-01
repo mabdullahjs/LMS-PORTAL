@@ -26,7 +26,7 @@ function Register() {
             cnic:cnic,
             type:type
         }
-        sendData(obj , "NewAdmission")
+        sendData(obj , "newUser")
         .then((res)=>{
             console.log(res);
             setLoader(false);
