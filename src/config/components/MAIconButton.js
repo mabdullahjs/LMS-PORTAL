@@ -1,10 +1,11 @@
 import IconButton from "@mui/material/IconButton";
 
 function MAIconbutton(props) {
-  const { icon, onClick } = props;
+  const { icon, onClick, className } = props;
   return (
     <>
       <IconButton
+        className={className}
         variant="Contained"
         color="primary"
         aria-label="upload picture"

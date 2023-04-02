@@ -102,5 +102,18 @@ const getData = (colName) => {
   });
 };
 
+//get all data
+const getAllData = (colName) => {
+  return new Promise(async (resolve, reject) => {
+    const dataArr = []
+    const querySnapshot = await getDocs(collection(db, colName));
+    querySnapshot.forEach((doc) => {
+      dataArr.push(doc.data())
+      resolve(dataArr);
+    });
+    reject("error occured")
+  })
+}
 
-export { signUpUser, loginUser, auth, signOutUser, sendData, getData , db };
+
+export { signUpUser, loginUser, auth, signOutUser, sendData, getData, getAllData, db };

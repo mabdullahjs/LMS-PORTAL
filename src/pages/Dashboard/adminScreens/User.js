@@ -1,10 +1,11 @@
-import { Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import MAButton from '../../../config/components/MAButton';
 import MAInput from '../../../config/components/MAInput';
 import MASelect from '../../../config/components/MASelect';
 import { sendData } from '../../../config/Firebase/firebaseMethod';
+import MAScreenHeader from '../../../config/components/MAScreenHeader';
 
 
 function Register() {
@@ -14,31 +15,31 @@ function Register() {
     const [email, setEmail] = useState("");
     const [cnic, setCnic] = useState("");
     const [password, setPassword] = useState("");
-    const [type , setType] = useState("")
-    const [loader , setLoader] = useState(false)
+    const [type, setType] = useState("")
+    const [loader, setLoader] = useState(false)
 
     // register student
-    const registerStudent = ()=>{
+    const registerStudent = () => {
         setLoader(true);
         const obj = {
-            name:name,
-            Email:email,
-            cnic:cnic,
-            type:type
+            name: name,
+            Email: email,
+            cnic: cnic,
+            type: type
         }
-        sendData(obj , "newUser")
-        .then((res)=>{
-            console.log(res);
-            setLoader(false);
-        })
-        .catch((err)=>{
-            console.log(err);
-            setLoader(false);
-        })
+        sendData(obj, "newUser")
+            .then((res) => {
+                console.log(res);
+                setLoader(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoader(false);
+            })
     }
     return (
         <Box>
-            <Typography className='text-center mt-3' variant='h5'>Create User</Typography>
+            <MAScreenHeader screenTitle="Create User" />
             <Box className="mt-5 d-flex justify-content-center">
                 <Grid className='w-50' container spacing={5}>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
@@ -54,15 +55,15 @@ function Register() {
                         <MAInput fullWidth={true} type="number" onChange={(e) => setCnic(e.target.value)} value={cnic} variant="outlined" label="CNIC" />
                     </Grid>
                     <Grid className='d-flex justify-content-center' item xs={12} md={6}>
-                        <MASelect option={["Admin", "Student" , "Teacher" , "Institute"]} onChange={(e) => setType(e.target.value)} value={type} variant="outlined" label="Select Course" />
+                        <MASelect option={["Admin", "Student", "Teacher", "Institute"]} onChange={(e) => setType(e.target.value)} value={type} variant="outlined" label="Select Course" />
                     </Grid>
-                    
+
 
                 </Grid>
 
             </Box >
             <Box className="mt-5 d-flex justify-content-center">
-                <MAButton className="mb-5" onClick={()=>registerStudent()} loading={loader} label="Submit" />
+                <MAButton className="mb-5" onClick={() => registerStudent()} loading={loader} label="Submit" />
             </Box>
         </Box>
     )
