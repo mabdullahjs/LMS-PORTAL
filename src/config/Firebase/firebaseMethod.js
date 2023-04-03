@@ -12,6 +12,8 @@ import {
   getDocs,
   query,
   where,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 const auth = getAuth(app);
@@ -108,12 +110,22 @@ const getAllData = (colName) => {
     const dataArr = []
     const querySnapshot = await getDocs(collection(db, colName));
     querySnapshot.forEach((doc) => {
-      dataArr.push(doc.data())
+      const obj = {...doc.data() , documentId: doc.id}
+      dataArr.push(obj)
       resolve(dataArr);
     });
     reject("error occured")
   })
 }
 
+//Delete document by id
+const deleteDocument = async(id , name)=>{
+  return new Promise((resolve , reject)=>{
+     deleteDoc(doc(db, name, id));
+     resolve("document deleted")
+     reject("error occured")
+  })
+}
 
-export { signUpUser, loginUser, auth, signOutUser, sendData, getData, getAllData, db };
+
+export { signUpUser, loginUser, auth, signOutUser, sendData, getData, getAllData,deleteDocument, db };
