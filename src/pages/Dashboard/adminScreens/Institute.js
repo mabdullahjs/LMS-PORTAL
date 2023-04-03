@@ -10,12 +10,15 @@ import MAIconbutton from "../../../config/components/MAIconButton";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import MAScreenHeader from "../../../config/components/MAScreenHeader";
+import { useNavigate } from "react-router-dom";
 
 
 function Institute() {
   // modal open or close
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
+  const [uid, setUid] = useState("");
   const [modal, setModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     getAllData("Institute")
@@ -28,6 +31,13 @@ function Institute() {
       });
   }, [data]);
 
+
+  //useNavigate hook
+
+  const navigate = useNavigate()
+
+  // Delete Institute function
+
   const deleteInsitute = async (id) => {
     await deleteDocument(id, "Institute")
       .then((res) => {
@@ -36,14 +46,31 @@ function Institute() {
       .catch((err) => {
         console.log(err);
       })
+      setDeleteModal(false)
   }
 
+
+  // Open delete modal function
+
+  const openModal = (id , e) => {
+    e.stopPropagation()
+    setUid(id)
+    setDeleteModal(true)
+  }
+
+  //send detail to another page
+
+  const sendDetail = (item)=>{
+    navigate('/admin/detail' , {
+      state:item
+    })
+  }
 
   return (
     <Box>
       <MAScreenHeader screenTitle="Institute List" buttonsList={<MAButton onClick={() => setModal(true)} label="Create Institute" />} />
       {data ? data.map((item, index) => {
-        return <Box key={index}>
+        return <Box key={index} onClick={()=>sendDetail(item)}>
           <Paper className="shadow p-4 mb-3 bg-white rounded">
             <Grid container>
               <Grid item md={2} sm={6}>
@@ -63,11 +90,10 @@ function Institute() {
               </Grid>
               <Grid item md={1} sm={6}>
                 <Box className="mt-3">
-                  <MAIconbutton onClick={() => deleteInsitute(item.documentId)} icon={<DeleteIcon />} />
-                  <MAIconbutton icon={<EditIcon />} />
+                  <MAIconbutton onClick={(e) => openModal(item.documentId , e)} icon={<DeleteIcon />} />
+                  <MAIconbutton onClick={(e)=>e.stopPropagation()} icon={<EditIcon />} />
                 </Box>
               </Grid>
-
             </Grid>
           </Paper>
         </Box>
@@ -79,6 +105,17 @@ function Institute() {
         close={() => setModal(false)}
         modalTitle="Create Institute"
         innerContent={<InsForm func={() => setModal(false)} />}
+      />
+      <MAModal
+      width="400px"
+        open={deleteModal}
+        close={() => setDeleteModal(false)}
+        modalTitle="Delete Institute"
+        innerContent={<Box>
+          <Typography>Are you sure you want to delete Institute?</Typography>
+          <MAButton onClick={()=>deleteInsitute(uid)} className="m-2" color="error" label="Yes"/>
+          <MAButton onClick={() => setDeleteModal(false)}  label="No"/>
+        </Box>}
       />
       <Box className="mt-5 d-flex justify-content-center">
       </Box>

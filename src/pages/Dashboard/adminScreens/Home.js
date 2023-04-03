@@ -5,6 +5,7 @@ import MADrawer from '../../../config/components/MADrawer'
 import Institute from './Institute'
 import { signOutUser } from '../../../config/Firebase/firebaseMethod'
 import User from './User'
+import InsDetail from './InsDetail'
 
 function Home() {
 
@@ -36,6 +37,7 @@ function Home() {
         <Route path='/' element={<MADrawer func0={user} func1={institutes} func2={signout} screen={<Institute />} label="Admin" options={['User', 'Institute', 'Signout']} />} />
         {/* <Route path='/' element={<InsForm/>} /> */}
         <Route path='/user' element={<MADrawer func0={user} func1={institutes} func2={signout} screen={<User />} label="Admin" options={['User', 'Institute', 'Signout']} />} />
+        <Route path='/detail' element={<MADrawer func0={user} func1={institutes} func2={signout} screen={<InsDetail />} label="Admin" options={['User', 'Institute', 'Signout']} />} />
       </Routes>
     </Box>
   )
