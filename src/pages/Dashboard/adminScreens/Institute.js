@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import MAButton from "../../../config/components/MAButton";
 import MAModal from "../../../config/components/MAModal";
-import { deleteDocument, getAllData } from "../../../config/Firebase/firebaseMethod";
+import { deleteDocument, getAllData, updateDocument } from "../../../config/Firebase/firebaseMethod";
 import InsForm from "./InsForm";
 import Brightness1Icon from '@mui/icons-material/Brightness1';
 import MAIconbutton from "../../../config/components/MAIconButton";
@@ -49,6 +49,21 @@ function Institute() {
       setDeleteModal(false)
   }
 
+  //update institute function
+  const updateInstitute = async(id , e)=>{
+    e.stopPropagation()
+    const obj = {
+      shortName:"usman"
+    }
+    await updateDocument(obj , id , "Institute")
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
 
   // Open delete modal function
 
@@ -91,7 +106,7 @@ function Institute() {
               <Grid item md={1} sm={6}>
                 <Box className="mt-3">
                   <MAIconbutton onClick={(e) => openModal(item.documentId , e)} icon={<DeleteIcon />} />
-                  <MAIconbutton onClick={(e)=>e.stopPropagation()} icon={<EditIcon />} />
+                  <MAIconbutton onClick={(e)=> updateInstitute(item.documentId , e)} icon={<EditIcon />} />
                 </Box>
               </Grid>
             </Grid>
