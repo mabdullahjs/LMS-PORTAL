@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import MAButton from "../../../config/components/MAButton";
 import MAModal from "../../../config/components/MAModal";
-import { deleteDocument, getAllData, updateDocument } from "../../../config/Firebase/firebaseMethod";
+import {  deleteDocument, getAllData, updateDocument } from "../../../config/Firebase/firebaseMethod";
 import InsForm from "./InsForm";
 import Brightness1Icon from '@mui/icons-material/Brightness1';
 import MAIconbutton from "../../../config/components/MAIconButton";
@@ -11,13 +11,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import MAScreenHeader from "../../../config/components/MAScreenHeader";
 import { useNavigate } from "react-router-dom";
-
+import MAInput from "../../../config/components/MAInput";
 
 function Institute() {
   // modal open or close
   const [data, setData] = useState(null);
   const [uid, setUid] = useState("");
+  const [updateName, setUpdateName] = useState("");
   const [modal, setModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
@@ -38,9 +40,9 @@ function Institute() {
 
   // Delete Institute function
 
-  const deleteInsitute = async (id) => {
-    await deleteDocument(id, "Institute")
-      .then((res) => {
+  const deleteInsitute = async (item) => {
+    await deleteDocument(item.documentId, "Institute")
+      .then( (res) => {
         console.log(res);
       })
       .catch((err) => {
@@ -51,13 +53,14 @@ function Institute() {
 
   //update institute function
   const updateInstitute = async(id , e)=>{
-    e.stopPropagation()
     const obj = {
-      shortName:"usman"
+      shortName:updateName
     }
     await updateDocument(obj , id , "Institute")
     .then((res)=>{
       console.log(res);
+      setUpdateName("")
+      setUpdateModal(false)
     })
     .catch((err)=>{
       console.log(err);
@@ -67,10 +70,17 @@ function Institute() {
 
   // Open delete modal function
 
-  const openModal = (id , e) => {
+  const openModal = (item , e) => {
+    e.stopPropagation()
+    setUid(item)
+    setDeleteModal(true)
+  }
+
+  //open update Institute Modal
+  const openUpdateModal = (id , e)=>{
     e.stopPropagation()
     setUid(id)
-    setDeleteModal(true)
+    setUpdateModal(true)
   }
 
   //send detail to another page
@@ -105,8 +115,8 @@ function Institute() {
               </Grid>
               <Grid item md={1} sm={6}>
                 <Box className="mt-3">
-                  <MAIconbutton onClick={(e) => openModal(item.documentId , e)} icon={<DeleteIcon />} />
-                  <MAIconbutton onClick={(e)=> updateInstitute(item.documentId , e)} icon={<EditIcon />} />
+                  <MAIconbutton onClick={(e) => openModal(item , e)} icon={<DeleteIcon />} />
+                  <MAIconbutton onClick={(e)=> openUpdateModal(item.documentId , e)} icon={<EditIcon />} />
                 </Box>
               </Grid>
             </Grid>
@@ -120,6 +130,15 @@ function Institute() {
         close={() => setModal(false)}
         modalTitle="Create Institute"
         innerContent={<InsForm func={() => setModal(false)} />}
+      />
+      <MAModal
+        open={updateModal}
+        close={() => setUpdateModal(false)}
+        modalTitle="Update Institute"
+        innerContent={<Box>
+          <MAInput value={updateName} onChange={(e)=>setUpdateName(e.target.value)} label="Name"/> <br/><br/>
+          <MAButton onClick={()=>updateInstitute(uid)} label="Update"/>
+        </Box>}
       />
       <MAModal
       width="400px"
