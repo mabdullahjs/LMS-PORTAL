@@ -54,6 +54,9 @@ function Login() {
       <Box className="mt-5 mb-5"> 
       <MAButton loading={loader} label="login" size="large" onClick={loginUsers} />
       </Box>
+      <Typography>Login Credentials.</Typography>
+      <Typography>email: mabdullah2037@gmail.com</Typography>
+      <Typography>password: 123456</Typography>
     </Box>
   );
 }
